@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - KosFinder</title>
+    <!-- Menghubungkan ke Google Fonts untuk tipografi yang modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Gaya Layout Split Screen Halaman Register */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+        }
+
+        .register-page-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Bagian Kiri: Visual Banner (Gunakan gambar interior kos berbeda agar variatif) */
+        .register-visual-side {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(16, 185, 129, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px;
+            color: #ffffff;
+        }
+
+        .brand-logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo span {
+            color: #a7f3d0;
+        }
+
+        .visual-text h2 {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .visual-text p {
+            color: #e2e8f0;
+            font-size: 16px;
+            max-width: 460px;
+        }
+
+        /* Bagian Kanan: Formulir Pendaftaran */
+        .register-form-side {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-white);
+            padding: 40px;
+            position: relative;
+            overflow-y: auto;
+            /* Jaga-jaga jika layar vertikal kecil agar form bisa di-scroll */
+        }
+
+        .register-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px 0;
+        }
+
+        .register-box h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .register-box .subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 28px;
+        }
+
+        /* Tombol Kembali ke Beranda */
+        .back-to-home {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-to-home:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Breakpoint untuk Layar Tablet/Mobile */
+        @media (max-width: 900px) {
+            .register-page-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .register-visual-side {
+                display: none;
+            }
+
+            .back-to-home {
+                top: 24px;
+                right: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-page-wrapper">
+
+        <!-- SISI KIRI: Tampilan Ilustrasi Estetis -->
+        <div class="register-visual-side">
+            <div class="brand-logo">Kos<span>Finder</span></div>
+            <div class="visual-text">
+                <h2>Gabung dan Temukan Kemudahan Mencari Kos.</h2>
+                <p>Dengan membuat akun, Anda dapat menyimpan kos favorit, mengajukan sewa secara online, dan berdiskusi
+                    langsung dengan para pemilik kos tepercaya.</p>
+            </div>
+            <div style="font-size: 13px; color: #cbd5e1;">© 2026 KosFinder Platform </div>
+        </div>
+
+        <!-- SISI KANAN: Formulir Pendaftaran Akun -->
+        <div class="register-form-side">
+            <a href="index.html" class="back-to-home">← Kembali ke Beranda</a>
+
+            <div class="register-box">
+                <h2>Daftar Akun</h2>
+                <p class="subtitle">Buat akun barumu untuk mulai menjelajahi ribuan kos terbaik.</p>
+
+                <form action="login.html" method="POST">
+                    <div class="form-group">
+                        <label for="nama_lengkap">Nama Lengkap</label>
+                        <input type="text" id="nama_lengkap" class="form-control" name="nama_lengkap"
+                            placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="contoh@email.com"
+                            autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <label for="password">Password Baru</label>
+                        <input type="password" id="password" class="form-control" name="password"
+                            placeholder="Minimal 8 karakter" required>
+                    </div>
+
+                    <button type="submit" class="form-btn" style="padding: 15px;">Daftar Akun Baru</button>
+                </form>
+
+                <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--text-muted);">
+                    Sudah memiliki akun? <a href="login.html"
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Masuk di sini</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

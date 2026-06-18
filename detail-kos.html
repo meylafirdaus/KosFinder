@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Kos - KosFinder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>KosFinder</h1>
+        <nav>
+            <a href="index.html">Kembali ke Beranda</a>
+        </nav>
+    </header>
+
+    <div class="detail-container">
+        <img class="detail-img" id="kos-img" src="" alt="Foto Kos">
+
+        <div class="detail-content">
+            <h2 id="kos-title">Nama Kos</h2>
+            <div class="price" id="kos-price">Harga Kos</div>
+
+            <p class="description" id="kos-description">
+                Deskripsi kos...
+            </p>
+
+            <h3>Fasilitas Utama</h3>
+            <ul id="kos-facilities">
+            </ul>
+
+            <a href="#" id="whatsapp-link" class="whatsapp-btn" target="_blank">
+                Hubungi Pemilik via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 KosFinder | Sistem Informasi Pencari Kos dan Kontrakan</p>
+    </footer>
+
+    <script>
+        // 1. Data lengkap masing-masing kos disimpan di sini
+        const dataKos = {
+            melati: {
+                title: "Kos Melati",
+                price: "Rp500.000<span style='font-size: 16px; color: #64748b; font-weight: normal;'> / Bulan</span>",
+                img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1000&q=80",
+                description: "Kos nyaman dengan harga yang sangat terjangkau, lokasi tenang dan sangat dekat dengan akses lingkungan kampus.",
+                facilities: ["Koneksi WiFi", "Parkir Motor Aman", "Kamar Mandi Dalam", "Dapur Bersama"],
+                waText: "Halo Admin, saya tertarik dengan Kos Melati"
+            },
+            mawar: {
+                title: "Kos Mawar",
+                price: "Rp700.000<span style='font-size: 16px; color: #64748b; font-weight: normal;'> / Bulan</span>",
+                img: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=80",
+                description: "Kos eksklusif yang tenang dan aman, sangat cocok untuk mahasiswa maupun karyawan. Berlokasi strategis di pusat kota.",
+                facilities: ["Pendingin Ruangan (AC)", "Koneksi WiFi Cepat", "Keamanan CCTV 24 Jam", "Kamar Mandi Dalam", "Kasur & Lemari"],
+                waText: "Halo Admin, saya tertarik dengan Kos Mawar"
+            },
+            anggrek: {
+                title: "Kos Anggrek",
+                price: "Rp850.000<span style='font-size: 16px; color: #64748b; font-weight: normal;'> / Bulan</span>",
+                img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+                description: "Hunian kos modern dengan desain interior yang minimalis dan estetik. Memiliki area parkir yang sangat luas dan lingkungan asri.",
+                facilities: ["Pendingin Ruangan (AC)", "Koneksi WiFi Cepat", "Area Parkir Luas", "Kamar Mandi Dalam & Shower", "Dapur & Kulkas Bersama"],
+                waText: "Halo Admin, saya tertarik dengan Kos Anggrek"
+            }
+        };
+
+        // 2. Ambil parameter '?type=...' dari URL browser
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipeKos = urlParams.get('type') || 'melati'; // Jika tidak ada parameter, otomatis tampilkan melati
+
+        // 3. Ambil data yang sesuai dari object dataKos
+        const kos = dataKos[tipeKos];
+
+        // 4. Masukkan data ke elemen HTML jika datanya ditemukan
+        if (kos) {
+            document.getElementById('kos-title').innerText = kos.title;
+            document.getElementById('kos-price').innerHTML = kos.price;
+            document.getElementById('kos-img').src = kos.img;
+            document.getElementById('kos-img').alt = kos.title;
+            document.getElementById('kos-description').innerText = kos.description;
+            document.getElementById('whatsapp-link').href = `https://wa.me/628123456789?text=${encodeURIComponent(kos.waText)}`;
+
+            // Buat daftar list fasilitas secara otomatis
+            const facilitiesContainer = document.getElementById('kos-facilities');
+            facilitiesContainer.innerHTML = ''; // Kosongkan template lama
+            kos.facilities.forEach(fasilitas => {
+                const li = document.createElement('li');
+                li.innerText = fasilitas;
+                facilitiesContainer.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
